@@ -15,4 +15,4 @@ Download your OPML file from feedly.
 
 `node main.js <path to the opml file>`
 
-Use allow keys to select Categories, feeds, articles.
+Use arrow keys to select Categories, feeds, articles.
