@@ -29,16 +29,27 @@ const parsed_xml = xml_parser.parse(
     { ignoreAttributes : false }
 ).opml.body.outline;
 
+
 const rss_list = parsed_xml.map(categoryData => {
-  const feeds = categoryData.outline.map(feed => {
+  if (Array.isArray(categoryData.outline)) {
+    const feeds = categoryData.outline.map(feed => {
+      return {
+        title : feed['@_text'],
+        url   : feed['@_xmlUrl']
+      }
+    });
     return {
-      title : feed['@_text'],
-      url   : feed['@_xmlUrl']
+      category : categoryData['@_text'],
+      feeds    : feeds
+    }  
+  } else {
+    return {
+      category : categoryData['@_text'],
+      feeds    : [{
+        title : categoryData.outline['@_text'],
+        url   : categoryData.outline['@_xmlUrl'] 
+      }]
     }
-  });
-  return {
-    category : categoryData['@_text'],
-    feeds    : feeds
   }
 });
 
