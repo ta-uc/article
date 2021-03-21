@@ -11,7 +11,7 @@ var selectedItem = {category:0, feed:0, itemList:[]}
 
 const uiObjects = ui.createUi();
 
-const readArticle = function(url, area) {
+const readArticle = (url, area) => {
  fetch(url)
   .then(res => res.text())
   .then(body => {
@@ -54,7 +54,7 @@ const rss_list = parsed_xml.map(categoryData => {
 });
 
 
-const loadFeedList = function(url) {
+const loadFeedList = url => {
   selectedItem["itemList"] = []
   rss_parser.parseURL(url)
   .then(data => data.items)
