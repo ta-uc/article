@@ -7,7 +7,7 @@ const JSDOM = require('jsdom').JSDOM;
 const rss_parser = new Parser();
 const ui = require('./ui.js');
 
-var selectedItem = {category:0, feed:0, itemList:[]}
+const selectedItem = {category:0, feed:0, itemList:[]};
 
 const uiObjects = ui.createUi();
 
